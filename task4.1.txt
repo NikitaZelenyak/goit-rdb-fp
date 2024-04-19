@@ -1,0 +1,3 @@
+SELECT Entity, Code, Year, 
+CONCAT(Year, "-01-01") AS year_start_date
+FROM infectious_cases;

@@ -1,0 +1,3 @@
+SELECT Entity, Code, Year,
+TIMESTAMPDIFF(YEAR, CONCAT(Year, '-01-01'), CURDATE()) AS difference_year
+FROM infectious_cases;

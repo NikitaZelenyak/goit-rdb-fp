@@ -1,0 +1,20 @@
+USE pandemic; 
+SELECT 
+    countries.country AS Entity, 
+    countries.code AS Code,
+    AVG(cases_normalized.Number_rabies) AS Average_Rabies,
+    MIN(cases_normalized.Number_rabies) AS Minimum_Rabies,
+    MAX(cases_normalized.Number_rabies) AS Maximum_Rabies,
+    SUM(cases_normalized.Number_rabies) AS Total_Rabies
+FROM 
+    cases_normalized
+JOIN 
+    countries ON cases_normalized.country_id = countries.id
+WHERE 
+    cases_normalized.Number_rabies IS NOT NULL AND cases_normalized.Number_rabies <> ''
+GROUP BY 
+    countries.country, countries.code
+ORDER BY 
+    Average_Rabies DESC
+LIMIT 
+    10;
